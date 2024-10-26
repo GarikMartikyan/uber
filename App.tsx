@@ -5,8 +5,8 @@
  * @format
  */
 
-import React from 'react';
 import type {PropsWithChildren} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -24,6 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import './src/global.css';
 
 type SectionProps = PropsWithChildren<{
   title: string;
