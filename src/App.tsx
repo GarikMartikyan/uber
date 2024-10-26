@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {TabNavigator} from './navigation/TabNavigator.tsx';
 
 import BootSplash from 'react-native-bootsplash';
+import {MainNavigation} from './navigation/MainNavigation.tsx';
 
 export function App() {
   useEffect(() => {
@@ -14,5 +14,5 @@ export function App() {
       console.log('BootSplash has been hidden successfully');
     });
   }, []);
-  return <TabNavigator />;
+  return <MainNavigation />;
 }
