@@ -14,5 +14,6 @@ export function App() {
       console.log('BootSplash has been hidden successfully');
     });
   }, []);
+
   return <MainNavigation />;
 }

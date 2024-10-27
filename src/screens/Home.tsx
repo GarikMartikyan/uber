@@ -1,6 +1,5 @@
-import {Button, StatusBar} from 'react-native';
+import {Button, StatusBar, View} from 'react-native';
 import * as React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -20,13 +19,15 @@ export function HomeScreen() {
     progress.value = 1;
   };
   return (
-    <SafeAreaView className="flex-1 items-center justify-center bg-white">
-      <Animated.Text className="text-red-600 text-5xl" style={[style]}>
+    <View className="flex-1 items-center justify-center bg-white">
+      <Animated.Text
+        className="text-red-600 text-5xl font-Kaka"
+        style={[style]}>
         Uber Clone
       </Animated.Text>
       <Button onPress={onPress} title={'Fade Out'} />
       <Button onPress={onPressIn} title={'Fade in'} />
       <StatusBar backgroundColor={'#fff'} />
-    </SafeAreaView>
+    </View>
   );
 }
