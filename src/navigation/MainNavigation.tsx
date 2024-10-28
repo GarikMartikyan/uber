@@ -14,8 +14,8 @@ export function MainNavigation() {
         headerShown: false,
       }}>
       <Stack.Screen name={routes.onboarding} component={OnboardingScreen} />
-      <Stack.Screen name={routes.signUp} component={SignUp} />
       <Stack.Screen name={routes.signIn} component={SignIn} />
+      <Stack.Screen name={routes.signUp} component={SignUp} />
       <Stack.Screen name={routes.bottomTabs} component={TabNavigator} />
     </Stack.Navigator>
   );

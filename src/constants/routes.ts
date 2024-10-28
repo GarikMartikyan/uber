@@ -5,4 +5,4 @@ export const routes = {
   settings: 'Settings',
   signUp: 'SignUp',
   signIn: 'SignIn',
-};
+} as const;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 import {images} from '../../constants/content/images.ts';
 import {InputField} from '../../components/InputField.tsx';
@@ -7,37 +7,39 @@ import {CustomButton} from '../../components/CustomButton.tsx';
 import {OAuth} from '../../components/OAuth.tsx';
 import {Link} from '@react-navigation/native';
 import {routes} from '../../constants/routes.ts';
+import {useSignIn} from '../../hooks/useSignIn.ts';
 
 export const SignIn = () => {
-  // const {signIn, setActive, isLoaded} = useSignIn();
+  const {signIn, isLoading, isSuccess} = useSignIn();
 
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
 
-  // const onSignInPress = useCallback(async () => {
-  //   if (!isLoaded) return;
-  //
-  //   try {
-  //     const signInAttempt = await signIn.create({
-  //       identifier: form.email,
-  //       password: form.password,
-  //     });
-  //
-  //     if (signInAttempt.status === 'complete') {
-  //       await setActive({session: signInAttempt.createdSessionId});
-  //       router.replace('/(root)/(tabs)/home');
-  //     } else {
-  //       // See https://clerk.com/docs/custom-flows/error-handling for more info on error handling
-  //       console.log(JSON.stringify(signInAttempt, null, 2));
-  //       Alert.alert('Error', 'Log in failed. Please try again.');
-  //     }
-  //   } catch (err: any) {
-  //     console.log(JSON.stringify(err, null, 2));
-  //     Alert.alert('Error', err.errors[0].longMessage);
-  //   }
-  // }, [isLoaded, form]);
+  const onSignInPress = useCallback(() => {
+    signIn(form.email, form.password);
+    //   if (!isLoaded) return;
+    //
+    //   try {
+    //     const signInAttempt = await signIn.create({
+    //       identifier: form.email,
+    //       password: form.password,
+    //     });
+    //
+    //     if (signInAttempt.status === 'complete') {
+    //       await setActive({session: signInAttempt.createdSessionId});
+    //       router.replace('/(root)/(tabs)/home');
+    //     } else {
+    //       // See https://clerk.com/docs/custom-flows/error-handling for more info on error handling
+    //       console.log(JSON.stringify(signInAttempt, null, 2));
+    //       Alert.alert('Error', 'Log in failed. Please try again.');
+    //     }
+    //   } catch (err: any) {
+    //     console.log(JSON.stringify(err, null, 2));
+    //     Alert.alert('Error', err.errors[0].longMessage);
+    //   }
+  }, [isLoading, form]);
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -71,8 +73,7 @@ export const SignIn = () => {
 
           <CustomButton
             title="Sign In"
-            // onPress={onSignInPress}
-            onPress={() => {}}
+            onPress={onSignInPress}
             className="mt-6"
           />
 

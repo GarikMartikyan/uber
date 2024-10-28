@@ -36,7 +36,7 @@ export const InputField = ({
               <Image source={icon} className={`w-6 h-6 ml-4 ${iconStyle}`} />
             )}
             <TextInput
-              className={`rounded-full p-4 font-JakartaSemiBold text-[15px] flex-1 ${inputStyle} text-left ${className}`}
+              className={`rounded-full p-4 font-JakartaSemiBold text-[15px] flex-1 ${inputStyle} text-left text-gray-600 ${className}`}
               secureTextEntry={secureTextEntry}
               placeholderTextColor={props.placeholderTextColor || 'gray'}
               {...props}

@@ -23,13 +23,13 @@ export function OnboardingScreen({navigation}) {
   };
 
   const handleSkipPress = () => {
-    navigation.replace(routes.signUp);
+    navigation.replace(routes.signIn);
   };
   const handleNextPress = () => {
     if (slideIndex < onboardingData.length - 1) {
       flatListRef.current?.scrollToIndex({index: slideIndex + 1});
     } else {
-      navigation.replace(routes.signUp);
+      navigation.replace(routes.signIn);
     }
   };
 

@@ -11,12 +11,13 @@ import {InputField} from '../../components/InputField.tsx';
 import {Link} from '@react-navigation/native';
 import {routes} from '../../constants/routes.ts';
 import {OAuth} from '../../components/OAuth.tsx';
+import {useSignUp} from '../../hooks/useSignUp.ts';
 // import OAuth from '@/components/OAuth';
 
 // import {fetchAPI} from '@/lib/fetch';
 
 const SignUp = () => {
-  // const {isLoaded, signUp, setActive} = useSignUp();
+  const {signUp, isLoading, isSuccess} = useSignUp();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const [form, setForm] = useState({
@@ -30,7 +31,9 @@ const SignUp = () => {
     code: '',
   });
 
-  const onSignUpPress = async () => {
+  const onSignUpPress = () => {
+    signUp(form.email, form.password);
+
     // if (!isLoaded) return;
     // try {
     //   await signUp.create({
