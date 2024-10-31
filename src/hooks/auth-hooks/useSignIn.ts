@@ -3,13 +3,12 @@ import auth from '@react-native-firebase/auth';
 import {Alert} from 'react-native';
 
 export const useSignIn = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean | undefined>(undefined);
+  const [isSuccess, setIsSuccess] = useState<boolean | undefined>(undefined);
 
   const signIn = useCallback(async (email: string, password: string) => {
     try {
       setIsLoading(true);
-      setIsSuccess(false);
 
       await auth().signInWithEmailAndPassword(email, password);
 

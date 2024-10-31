@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 
 import BootSplash from 'react-native-bootsplash';
-import {MainNavigation} from './navigation/MainNavigation.tsx';
+import {RootNavigation} from './navigation/RootNavigation.tsx';
 import {useAuthStateListener} from './hooks/auth-hooks/useAuthStateListener.ts';
 
 export function App() {
@@ -19,5 +19,5 @@ export function App() {
     });
   }, [initializing]);
 
-  return <MainNavigation />;
+  return <RootNavigation />;
 }

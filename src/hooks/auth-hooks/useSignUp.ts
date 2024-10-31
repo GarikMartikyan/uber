@@ -3,13 +3,12 @@ import {useCallback, useState} from 'react';
 import {Alert} from 'react-native';
 
 export function useSignUp() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean | undefined>(undefined);
+  const [isSuccess, setIsSuccess] = useState<boolean | undefined>(undefined);
 
   const signUp = useCallback(async (email: string, password: string) => {
     try {
       setIsLoading(true);
-      setIsSuccess(false);
 
       await auth().createUserWithEmailAndPassword(email, password);
 

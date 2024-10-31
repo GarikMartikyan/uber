@@ -3,12 +3,9 @@ import * as React from 'react';
 import Animated from 'react-native-reanimated';
 import {useAppSelector} from '../hooks/rtk-hooks/useAppSelector.ts';
 import {useSignOut} from '../hooks/auth-hooks/useSignOut.ts';
-import {routes} from '../constants/routes.ts';
-import {useAppNavigation} from '../hooks/navigation-hooks/useAppNavigation.ts';
 
 export function HomeScreen() {
   const user = useAppSelector(state => state.user);
-  const navigation = useAppNavigation();
   const {signOut} = useSignOut();
   console.log(user);
 
@@ -26,7 +23,6 @@ export function HomeScreen() {
 
   const handleSignOut = async () => {
     await signOut();
-    navigation.navigate(routes.signIn);
   };
 
   return (

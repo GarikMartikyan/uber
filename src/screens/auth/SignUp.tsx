@@ -9,10 +9,13 @@ import {images} from '../../constants/content/images.ts';
 import {icons} from '../../constants/content/icons.ts';
 import {InputField} from '../../components/InputField.tsx';
 import {Link} from '@react-navigation/native';
-import {routes} from '../../constants/routes.ts';
 import {OAuth} from '../../components/OAuth.tsx';
 import {useSignUp} from '../../hooks/auth-hooks/useSignUp.ts';
 import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
+import {RootNavigationStackParamList} from '../../types/navigation.interface.ts';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {routes} from '../../types/routes.ts';
+
 // import OAuth from '@/components/OAuth';
 
 // import {fetchAPI} from '@/lib/fetch';
@@ -20,7 +23,8 @@ import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts
 const SignUp = () => {
   const {signUp, isLoading, isSuccess} = useSignUp();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const navigation = useAppNavigation();
+  const navigation =
+    useAppNavigation<StackNavigationProp<RootNavigationStackParamList>>();
 
   const [form, setForm] = useState({
     name: '',
@@ -136,7 +140,7 @@ const SignUp = () => {
           />
           <OAuth />
           <Link
-            to={{screen: routes.signIn}}
+            to={{screen: routes.SIGN_IN}}
             className="text-lg text-center text-general-200 mt-10">
             Already have an account?{' '}
             <Text className="text-primary-500">Log In</Text>

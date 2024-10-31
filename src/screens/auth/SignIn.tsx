@@ -6,7 +6,7 @@ import {icons} from '../../constants/content/icons.ts';
 import {CustomButton} from '../../components/CustomButton.tsx';
 import {OAuth} from '../../components/OAuth.tsx';
 import {Link} from '@react-navigation/native';
-import {routes} from '../../constants/routes.ts';
+import {routes} from '../../types/routes.ts';
 import {useSignIn} from '../../hooks/auth-hooks/useSignIn.ts';
 import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
 
@@ -75,7 +75,7 @@ export const SignIn = () => {
           />
 
           <CustomButton
-            disabled={true}
+            disabled={isLoading}
             title="Sign In"
             onPress={onSignInPress}
             className="mt-6"
@@ -84,7 +84,7 @@ export const SignIn = () => {
           <OAuth />
 
           <Link
-            to={{screen: routes.signUp}}
+            to={{screen: routes.SIGN_UP}}
             className="text-lg text-center text-general-200 mt-10">
             Don't have an account?{' '}
             <Text className="text-primary-500">Sign Up</Text>
