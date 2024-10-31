@@ -1,13 +1,13 @@
 import {Button, StatusBar, View} from 'react-native';
 import * as React from 'react';
 import Animated from 'react-native-reanimated';
-import {useAppSelector} from '../hooks/rtk-hooks/useAppSelector.ts';
 import {useSignOut} from '../hooks/auth-hooks/useSignOut.ts';
+import {useMe} from '../hooks/data-hooks/useMe.ts';
 
 export function HomeScreen() {
-  const user = useAppSelector(state => state.user);
   const {signOut} = useSignOut();
-  console.log(user);
+  const me = useMe();
+  console.log(me);
 
   // const progress = useSharedValue(1);
   //
@@ -31,9 +31,9 @@ export function HomeScreen() {
         className="text-gray-700 text-5xl font-Kaka"
         // style={[style]}
       >
-        {user?.email || 'Hello'}
+        {me?.email || 'Hello'}
       </Animated.Text>
-      {/* eslint-disable-next-line react/jsx-no-undef */}
+
       <Button onPress={handleSignOut} title="Sign Out" />
       {/*<Button onPress={onPressIn} title={'Fade in'} />*/}
       <StatusBar barStyle={'dark-content'} backgroundColor="white" />

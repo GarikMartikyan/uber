@@ -1,5 +1,3 @@
-export interface User {
-  uid: string;
-  displayName: string;
-  email: string;
-}
+import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+
+export interface User extends FirebaseAuthTypes.User {}

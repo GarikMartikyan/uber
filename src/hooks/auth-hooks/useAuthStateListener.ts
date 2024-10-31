@@ -1,31 +1,25 @@
 import {useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import {useAppDispatch} from '../rtk-hooks/useAppDispatch.ts';
-import {clearUser, setUser} from '../../store/slices/userSlice.ts';
-import {routes} from '../../types/routes.ts';
-import {useNavigation} from '@react-navigation/native';
+import {clearUser} from '../../store/slices/userSlice.ts';
+import {useAppNavigation} from '../navigation-hooks/useAppNavigation.ts';
+import {Routes} from '../../types/navigation.interface.ts';
 
 export function useAuthStateListener() {
   const [initializing, setInitializing] = useState(true);
   const dispatch = useAppDispatch();
-  const navigation = useNavigation();
+  const navigation = useAppNavigation();
 
   useEffect(() => {
     const onAuthStateChanged = (user: any) => {
       setInitializing(false);
       if (user) {
-        console.log('onAuthStateChanged', user);
-        dispatch(
-          setUser({
-            uid: user.uid,
-            displayName: user.displayName,
-            email: user.email,
-          }),
-          navigation.navigate(routes.BOTTOM_TABS),
-        );
+        console.log('USER INITIALIZED');
+
+        navigation.navigate(Routes.BOTTOM_TABS, {screen: Routes.HOME});
       } else {
-        dispatch(clearUser());
-        navigation.navigate(routes.SIGN_IN);
+        console.log('USER LOG OUT');
+        navigation.navigate(Routes.SIGN_IN);
       }
     };
     const unsubscribe = auth().onAuthStateChanged(onAuthStateChanged);

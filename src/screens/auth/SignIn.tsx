@@ -5,14 +5,12 @@ import {InputField} from '../../components/InputField.tsx';
 import {icons} from '../../constants/content/icons.ts';
 import {CustomButton} from '../../components/CustomButton.tsx';
 import {OAuth} from '../../components/OAuth.tsx';
-import {Link} from '@react-navigation/native';
-import {routes} from '../../types/routes.ts';
 import {useSignIn} from '../../hooks/auth-hooks/useSignIn.ts';
-import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
+import {Routes} from '../../types/navigation.interface.ts';
+import {AppLink} from '../../components/AppLink.tsx';
 
 export const SignIn = () => {
-  const {signIn, isLoading, isSuccess} = useSignIn();
-  const navigation = useAppNavigation();
+  const {signIn, isLoading} = useSignIn();
 
   const [form, setForm] = useState({
     email: '',
@@ -21,27 +19,6 @@ export const SignIn = () => {
 
   const onSignInPress = useCallback(() => {
     signIn(form.email, form.password).then(a => console.log('CREDENTIALS', a));
-    // navigation.navigate(routes.bottomTabs);
-    //   if (!isLoaded) return;
-    //
-    //   try {
-    //     const signInAttempt = await signIn.create({
-    //       identifier: form.email,
-    //       password: form.password,
-    //     });
-    //
-    //     if (signInAttempt.status === 'complete') {
-    //       await setActive({session: signInAttempt.createdSessionId});
-    //       router.replace('/(root)/(tabs)/home');
-    //     } else {
-    //       // See https://clerk.com/docs/custom-flows/error-handling for more info on error handling
-    //       console.log(JSON.stringify(signInAttempt, null, 2));
-    //       Alert.alert('Error', 'Log in failed. Please try again.');
-    //     }
-    //   } catch (err: any) {
-    //     console.log(JSON.stringify(err, null, 2));
-    //     Alert.alert('Error', err.errors[0].longMessage);
-    //   }
   }, [isLoading, form]);
 
   return (
@@ -83,12 +60,12 @@ export const SignIn = () => {
 
           <OAuth />
 
-          <Link
-            to={{screen: routes.SIGN_UP}}
+          <AppLink
+            to={Routes.SIGN_UP}
             className="text-lg text-center text-general-200 mt-10">
             Don't have an account?{' '}
             <Text className="text-primary-500">Sign Up</Text>
-          </Link>
+          </AppLink>
         </View>
       </View>
     </ScrollView>

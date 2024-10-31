@@ -8,13 +8,12 @@ import {CustomButton} from '../../components/CustomButton';
 import {images} from '../../constants/content/images.ts';
 import {icons} from '../../constants/content/icons.ts';
 import {InputField} from '../../components/InputField.tsx';
-import {Link} from '@react-navigation/native';
 import {OAuth} from '../../components/OAuth.tsx';
 import {useSignUp} from '../../hooks/auth-hooks/useSignUp.ts';
 import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
-import {RootNavigationStackParamList} from '../../types/navigation.interface.ts';
+import {RootNavigationStackParamList, Routes,} from '../../types/navigation.interface.ts';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {routes} from '../../types/routes.ts';
+import {AppLink} from '../../components/AppLink.tsx';
 
 // import OAuth from '@/components/OAuth';
 
@@ -39,25 +38,6 @@ const SignUp = () => {
 
   const onSignUpPress = async () => {
     await signUp(form.email, form.password);
-    // navigation.navigate(routes.bottomTabs);
-
-    // if (!isLoaded) return;
-    // try {
-    //   await signUp.create({
-    //     emailAddress: form.email,
-    //     password: form.password,
-    //   });
-    //   await signUp.prepareEmailAddressVerification({strategy: 'email_code'});
-    //   setVerification({
-    //     ...verification,
-    //     state: 'pending',
-    //   });
-    // } catch (err: any) {
-    //   // See https://clerk.com/docs/custom-flows/error-handling
-    //   // for more info on error handling
-    //   console.log(JSON.stringify(err, null, 2));
-    //   Alert.alert('Error', err.errors[0].longMessage);
-    // }
   };
   const onPressVerify = async () => {
     // if (!isLoaded) return;
@@ -139,12 +119,12 @@ const SignUp = () => {
             className="mt-6"
           />
           <OAuth />
-          <Link
-            to={{screen: routes.SIGN_IN}}
+          <AppLink
+            to={Routes.SIGN_IN}
             className="text-lg text-center text-general-200 mt-10">
             Already have an account?{' '}
             <Text className="text-primary-500">Log In</Text>
-          </Link>
+          </AppLink>
         </View>
         {/*<ReactNativeModal*/}
         {/*  isVisible={verification.state === 'pending'}*/}

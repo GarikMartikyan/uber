@@ -2,18 +2,16 @@ import React from 'react';
 import {Image, Text, View} from 'react-native';
 import {CustomButton} from './CustomButton.tsx';
 import {icons} from '../constants/content/icons.ts';
-import {useAppNavigation} from '../hooks/navigation-hooks/useAppNavigation.ts';
 
 export const OAuth = () => {
-  const {navigation} = useAppNavigation();
-  // const {startOAuthFlow} = useOAuth({strategy: 'oauth_google'});
+  // const {startOAuthFlow} = useOAuth({st           rategy: 'oauth_google'});
 
   const handleGoogleSignIn = async () => {
     // const result = await googleOAuth(startOAuthFlow);
     //
     // if (result.code === 'session_exists') {
     //   Alert.alert('Success', 'Session exists. Redirecting to home screen.');
-    //   navigation.replace(routes.home);
+    //   navigation.replace(Routes.home);
     // }
     //
     // Alert.alert(result.success ? 'Success' : 'Error', result.message);

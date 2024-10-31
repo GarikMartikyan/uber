@@ -9,7 +9,7 @@ import {
 import React, {useRef, useState} from 'react';
 import {onboardingData} from '../../constants/content/onboardingData.ts';
 import {CustomButton} from '../../components/CustomButton.tsx';
-import {routes} from '../../types/routes.ts';
+import {Routes} from '../../types/navigation.interface.ts';
 
 const {width} = Dimensions.get('window');
 
@@ -23,13 +23,13 @@ export function OnboardingScreen({navigation}) {
   };
 
   const handleSkipPress = () => {
-    navigation.replace(routes.SIGN_IN);
+    navigation.replace(Routes.SIGN_IN);
   };
   const handleNextPress = () => {
     if (slideIndex < onboardingData.length - 1) {
       flatListRef.current?.scrollToIndex({index: slideIndex + 1});
     } else {
-      navigation.replace(routes.SIGN_IN);
+      navigation.replace(Routes.SIGN_IN);
     }
   };
 
