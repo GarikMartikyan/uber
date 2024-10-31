@@ -1,11 +1,8 @@
 import auth from '@react-native-firebase/auth';
 import {useCallback, useState} from 'react';
 import {Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {routes} from '../constants/routes.ts';
 
 export function useSignUp() {
-  const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(true);
 
@@ -17,7 +14,6 @@ export function useSignUp() {
       await auth().createUserWithEmailAndPassword(email, password);
 
       setIsSuccess(true);
-      navigation.navigate(routes.bottomTabs);
     } catch (error: any) {
       setIsSuccess(false);
       if (error?.code === 'auth/email-already-in-use') {

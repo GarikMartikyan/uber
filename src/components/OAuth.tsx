@@ -1,11 +1,11 @@
 import React from 'react';
 import {Image, Text, View} from 'react-native';
 import {CustomButton} from './CustomButton.tsx';
-import {useNavigation} from '@react-navigation/native';
 import {icons} from '../constants/content/icons.ts';
+import {useAppNavigation} from '../hooks/navigation-hooks/useAppNavigation.ts';
 
 export const OAuth = () => {
-  const navigation = useNavigation();
+  const {navigation} = useAppNavigation();
   // const {startOAuthFlow} = useOAuth({strategy: 'oauth_google'});
 
   const handleGoogleSignIn = async () => {

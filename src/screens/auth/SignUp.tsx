@@ -11,7 +11,8 @@ import {InputField} from '../../components/InputField.tsx';
 import {Link} from '@react-navigation/native';
 import {routes} from '../../constants/routes.ts';
 import {OAuth} from '../../components/OAuth.tsx';
-import {useSignUp} from '../../hooks/useSignUp.ts';
+import {useSignUp} from '../../hooks/auth-hooks/useSignUp.ts';
+import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
 // import OAuth from '@/components/OAuth';
 
 // import {fetchAPI} from '@/lib/fetch';
@@ -19,6 +20,7 @@ import {useSignUp} from '../../hooks/useSignUp.ts';
 const SignUp = () => {
   const {signUp, isLoading, isSuccess} = useSignUp();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const navigation = useAppNavigation();
 
   const [form, setForm] = useState({
     name: '',
@@ -31,8 +33,9 @@ const SignUp = () => {
     code: '',
   });
 
-  const onSignUpPress = () => {
-    signUp(form.email, form.password);
+  const onSignUpPress = async () => {
+    await signUp(form.email, form.password);
+    // navigation.navigate(routes.bottomTabs);
 
     // if (!isLoaded) return;
     // try {

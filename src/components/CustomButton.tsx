@@ -47,7 +47,9 @@ export const CustomButton = ({
       onPress={onPress}
       className={` rounded-full p-3 flex flex-row justify-center items-center shadow-md shadow-neutral-400/70 ${getBgVariantStyle(
         bgVariant,
-      )} ${className} ${fullWidth && 'w-full'}`}
+      )} ${className} ${fullWidth && 'w-full'} ${
+        props.disabled && 'opacity-50'
+      }`}
       {...props}>
       {IconLeft && <IconLeft />}
       <Text className={`text-lg font-bold ${getTextVariantStyle(textVariant)}`}>

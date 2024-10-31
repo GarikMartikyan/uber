@@ -7,10 +7,12 @@ import {CustomButton} from '../../components/CustomButton.tsx';
 import {OAuth} from '../../components/OAuth.tsx';
 import {Link} from '@react-navigation/native';
 import {routes} from '../../constants/routes.ts';
-import {useSignIn} from '../../hooks/useSignIn.ts';
+import {useSignIn} from '../../hooks/auth-hooks/useSignIn.ts';
+import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
 
 export const SignIn = () => {
   const {signIn, isLoading, isSuccess} = useSignIn();
+  const navigation = useAppNavigation();
 
   const [form, setForm] = useState({
     email: '',
@@ -18,7 +20,8 @@ export const SignIn = () => {
   });
 
   const onSignInPress = useCallback(() => {
-    signIn(form.email, form.password);
+    signIn(form.email, form.password).then(a => console.log('CREDENTIALS', a));
+    // navigation.navigate(routes.bottomTabs);
     //   if (!isLoaded) return;
     //
     //   try {
@@ -72,6 +75,7 @@ export const SignIn = () => {
           />
 
           <CustomButton
+            disabled={true}
             title="Sign In"
             onPress={onSignInPress}
             className="mt-6"
