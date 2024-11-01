@@ -10,9 +10,7 @@ import {icons} from '../../constants/content/icons.ts';
 import {InputField} from '../../components/InputField.tsx';
 import {OAuth} from '../../components/OAuth.tsx';
 import {useSignUp} from '../../hooks/auth-hooks/useSignUp.ts';
-import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
-import {RootNavigationStackParamList, Routes,} from '../../types/navigation.interface.ts';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {Routes} from '../../types/navigation.interface.ts';
 import {AppLink} from '../../components/AppLink.tsx';
 
 // import OAuth from '@/components/OAuth';
@@ -20,62 +18,18 @@ import {AppLink} from '../../components/AppLink.tsx';
 // import {fetchAPI} from '@/lib/fetch';
 
 const SignUp = () => {
-  const {signUp, isLoading, isSuccess} = useSignUp();
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const navigation =
-    useAppNavigation<StackNavigationProp<RootNavigationStackParamList>>();
+  const {signUp, isLoading} = useSignUp();
 
   const [form, setForm] = useState({
     name: '',
     email: '',
     password: '',
   });
-  const [verification, setVerification] = useState({
-    state: 'default',
-    error: '',
-    code: '',
-  });
 
   const onSignUpPress = async () => {
     await signUp(form.email, form.password);
   };
-  const onPressVerify = async () => {
-    // if (!isLoaded) return;
-    // try {
-    //   const completeSignUp = await signUp.attemptEmailAddressVerification({
-    //     code: verification.code,
-    //   });
-    //   if (completeSignUp.status === 'complete') {
-    //     await fetchAPI('/(api)/user', {
-    //       method: 'POST',
-    //       body: JSON.stringify({
-    //         name: form.name,
-    //         email: form.email,
-    //         clerkId: completeSignUp.createdUserId,
-    //       }),
-    //     });
-    //     await setActive({session: completeSignUp.createdSessionId});
-    //     setVerification({
-    //       ...verification,
-    //       state: 'success',
-    //     });
-    //   } else {
-    //     setVerification({
-    //       ...verification,
-    //       error: 'Verification failed. Please try again.',
-    //       state: 'failed',
-    //     });
-    //   }
-    // } catch (err: any) {
-    //   // See https://clerk.com/docs/custom-flows/error-handling
-    //   // for more info on error handling
-    //   setVerification({
-    //     ...verification,
-    //     error: err.errors[0].longMessage,
-    //     state: 'failed',
-    //   });
-    // }
-  };
+
   return (
     <ScrollView className="flex-1 bg-white">
       <View className="flex-1 bg-white">
@@ -114,6 +68,7 @@ const SignUp = () => {
             onChangeText={value => setForm({...form, password: value})}
           />
           <CustomButton
+            disabled={isLoading}
             title="Sign Up"
             onPress={onSignUpPress}
             className="mt-6"
@@ -126,62 +81,6 @@ const SignUp = () => {
             <Text className="text-primary-500">Log In</Text>
           </AppLink>
         </View>
-        {/*<ReactNativeModal*/}
-        {/*  isVisible={verification.state === 'pending'}*/}
-        {/*  // onBackdropPress={() =>*/}
-        {/*  //   setVerification({ ...verification, state: "default" })*/}
-        {/*  // }*/}
-        {/*  onModalHide={() => {*/}
-        {/*    if (verification.state === 'success') {*/}
-        {/*      setShowSuccessModal(true);*/}
-        {/*    }*/}
-        {/*  }}>*/}
-        {/*  <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">*/}
-        {/*    <Text className="font-JakartaExtraBold text-2xl mb-2">*/}
-        {/*      Verification*/}
-        {/*    </Text>*/}
-        {/*    <Text className="font-Jakarta mb-5">*/}
-        {/*      We've sent a verification code to {form.email}.*/}
-        {/*    </Text>*/}
-        {/*    <InputField*/}
-        {/*      label={'Code'}*/}
-        {/*      icon={icons.lock}*/}
-        {/*      placeholder={'12345'}*/}
-        {/*      value={verification.code}*/}
-        {/*      keyboardType="numeric"*/}
-        {/*      onChangeText={code => setVerification({...verification, code})}*/}
-        {/*    />*/}
-        {/*    {verification.error && (*/}
-        {/*      <Text className="text-red-500 text-sm mt-1">*/}
-        {/*        {verification.error}*/}
-        {/*      </Text>*/}
-        {/*    )}*/}
-        {/*    <CustomButton*/}
-        {/*      title="Verify Email"*/}
-        {/*      onPress={onPressVerify}*/}
-        {/*      className="mt-5 bg-success-500"*/}
-        {/*    />*/}
-        {/*  </View>*/}
-        {/*</ReactNativeModal>*/}
-        {/*<ReactNativeModal isVisible={showSuccessModal}>*/}
-        {/*  <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">*/}
-        {/*    <Image*/}
-        {/*      source={images.check}*/}
-        {/*      className="w-[110px] h-[110px] mx-auto my-5"*/}
-        {/*    />*/}
-        {/*    <Text className="text-3xl font-JakartaBold text-center">*/}
-        {/*      Verified*/}
-        {/*    </Text>*/}
-        {/*    <Text className="text-base text-gray-400 font-Jakarta text-center mt-2">*/}
-        {/*      You have successfully verified your account.*/}
-        {/*    </Text>*/}
-        {/*    <CustomButton*/}
-        {/*      title="Browse Home"*/}
-        {/*      onPress={() => router.push(`/(root)/(tabs)/home`)}*/}
-        {/*      className="mt-5"*/}
-        {/*    />*/}
-        {/*  </View>*/}
-        {/*</ReactNativeModal>*/}
       </View>
     </ScrollView>
   );
