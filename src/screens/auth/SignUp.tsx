@@ -1,6 +1,6 @@
 // import {useSignUp} from '@clerk/clerk-expo';
 // import {Link, router} from 'expo-router';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 // import {ReactNativeModal} from 'react-native-modal';
 //
@@ -12,6 +12,7 @@ import {OAuth} from '../../components/OAuth.tsx';
 import {useSignUp} from '../../hooks/auth-hooks/useSignUp.ts';
 import {Routes} from '../../types/navigation.interface.ts';
 import {AppLink} from '../../components/AppLink.tsx';
+import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
 
 // import OAuth from '@/components/OAuth';
 
@@ -19,12 +20,23 @@ import {AppLink} from '../../components/AppLink.tsx';
 
 const SignUp = () => {
   const {signUp, isLoading} = useSignUp();
+  const navigation = useAppNavigation();
 
   const [form, setForm] = useState({
     name: '',
     email: '',
     password: '',
   });
+
+  useEffect(() => {
+    return navigation.addListener('blur', () => {
+      setForm({
+        name: '',
+        email: '',
+        password: '',
+      });
+    });
+  }, [navigation]);
 
   const onSignUpPress = async () => {
     await signUp(form.email, form.password);

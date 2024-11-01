@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Image, ScrollView, Text, View} from 'react-native';
 import {images} from '../../constants/content/images.ts';
 import {InputField} from '../../components/InputField.tsx';
@@ -8,14 +8,25 @@ import {OAuth} from '../../components/OAuth.tsx';
 import {useSignIn} from '../../hooks/auth-hooks/useSignIn.ts';
 import {Routes} from '../../types/navigation.interface.ts';
 import {AppLink} from '../../components/AppLink.tsx';
+import {useAppNavigation} from '../../hooks/navigation-hooks/useAppNavigation.ts';
 
 export const SignIn = () => {
   const {signIn, isLoading} = useSignIn();
+  const navigation = useAppNavigation();
 
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
+
+  useEffect(() => {
+    return navigation.addListener('blur', () => {
+      setForm({
+        email: '',
+        password: '',
+      });
+    });
+  }, [navigation]);
 
   const onSignInPress = useCallback(() => {
     signIn(form.email, form.password).then(a => console.log('CREDENTIALS', a));

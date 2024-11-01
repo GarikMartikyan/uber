@@ -13,10 +13,16 @@ export function useAuthStateListener() {
       if (user) {
         console.log('USER INITIALIZED');
 
-        navigation.navigate(Routes.BOTTOM_TABS, {screen: Routes.HOME});
+        navigation.reset({
+          index: 0,
+          routes: [{name: Routes.BOTTOM_TABS, params: {screen: Routes.HOME}}],
+        });
       } else {
         console.log('THERE IS NO USER OR USER IS LOGGED OUT');
-        navigation.navigate(Routes.SIGN_IN);
+        navigation.reset({
+          index: 0,
+          routes: [{name: Routes.SIGN_IN}],
+        });
       }
     };
     const unsubscribe = auth().onAuthStateChanged(onAuthStateChanged);
