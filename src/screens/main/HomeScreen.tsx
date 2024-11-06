@@ -1,8 +1,8 @@
-import {Button, StatusBar, View} from 'react-native';
+import {Button, Image, StatusBar, View} from 'react-native';
 import * as React from 'react';
 import Animated from 'react-native-reanimated';
-import {useSignOut} from '../hooks/auth-hooks/useSignOut.ts';
-import {useMe} from '../hooks/data-hooks/useMe.ts';
+import {useSignOut} from '../../hooks/auth-hooks/useSignOut.ts';
+import {useMe} from '../../hooks/data-hooks/useMe.ts';
 
 export function HomeScreen() {
   const {signOut} = useSignOut();
@@ -33,6 +33,12 @@ export function HomeScreen() {
       >
         {me?.email || 'Hello'}
       </Animated.Text>
+      <Image
+        source={{
+          uri: me?.photoURL as string,
+        }}
+        className="w-32 h-32"
+      />
 
       <Button onPress={handleSignOut} title="Sign Out" />
       {/*<Button onPress={onPressIn} title={'Fade in'} />*/}

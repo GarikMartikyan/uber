@@ -7,11 +7,16 @@ export enum Routes {
   SIGN_IN = 'login',
   SIGN_UP = 'register',
   BOTTOM_TABS = 'bottom-tabs',
+  RIDES = 'rides',
+  PROFILE = 'profile',
+  CHAT = 'chat',
 }
 
 export type BottomTabsParamList = {
   [Routes.HOME]: undefined;
-  [Routes.SETTINGS]: undefined;
+  [Routes.CHAT]: undefined;
+  [Routes.PROFILE]: undefined;
+  [Routes.RIDES]: undefined;
 };
 
 export type RootNavigationStackParamList = {
