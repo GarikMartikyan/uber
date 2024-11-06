@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "460124397547",
     "project_id": "uber-clone-ed02c",
-    "storage_bucket": "uber-clone-ed02c.appspot.com"
+    "storage_bucket": "uber-clone-ed02c.firebasestorage.app"
   },
   "client": [
     {
@@ -12,7 +12,20 @@
           "package_name": "com.uber"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "460124397547-p1b8f4bvps57asnanacq762cir3us7fg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uber",
+            "certificate_hash": "ef62a6b31e3b8a466de42649aa5bd8b588d67a3d"
+          }
+        },
+        {
+          "client_id": "460124397547-gv44tmah2e1oskjhsujoqb7jr5lmet7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCeOJRaKxxAFVHcV4LXVEkCmkAaruHLASA"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460124397547-9e0schmsho8gg4r53aaltndocr99jo53.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460124397547-0u239jg27r8r1qejn5f80n5987qfeils.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.uber"
+              }
+            }
+          ]
         }
       }
     }

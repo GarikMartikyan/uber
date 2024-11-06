@@ -18,7 +18,7 @@ export function useAuthStateListener() {
           routes: [{name: Routes.BOTTOM_TABS, params: {screen: Routes.HOME}}],
         });
       } else {
-        console.log('THERE IS NO USER OR USER IS LOGGED OUT');
+        console.log('THERE IS NO USER /OR/ USER IS LOGGED OUT');
         navigation.reset({
           index: 0,
           routes: [{name: Routes.SIGN_IN}],
