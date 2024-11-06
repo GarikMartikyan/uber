@@ -7,8 +7,11 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "restart": "react-native start --reset-cache",
-    "test": "jest"
+    "test": "jest",
+    "open-xcode": "xed -b ios",
+    "pod-install": "cd ios && pod install && cd ..",
+    "pod-install-repo-update": "cd ios && pod install --repo-update && cd ..",
+    "restart": "react-native start --reset-cache"
   },
   "dependencies": {
     "@react-native-firebase/app": "^21.3.0",

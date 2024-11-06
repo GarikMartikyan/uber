@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CLIENT_ID</key>
+	<string>460124397547-0u239jg27r8r1qejn5f80n5987qfeils.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.460124397547-0u239jg27r8r1qejn5f80n5987qfeils</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>460124397547-ov382go8jpmaolvro4kk1jr08ols32t5.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBt8cBoaUukj0hwJa3NEZEEjOnwYCSkg2U</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +19,7 @@
 	<key>PROJECT_ID</key>
 	<string>uber-clone-ed02c</string>
 	<key>STORAGE_BUCKET</key>
-	<string>uber-clone-ed02c.appspot.com</string>
+	<string>uber-clone-ed02c.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
