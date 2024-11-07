@@ -27,4 +27,6 @@ declare module '*.gif' {
 
 declare module '@env' {
   export const DATABASE_URL: string;
+  export const GEOAPIFY_API_KEY: string;
+  export const YANDEX_MAPS_API_KEY: string;
 }

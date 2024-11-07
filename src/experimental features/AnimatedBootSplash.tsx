@@ -1,13 +1,13 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {Animated, Image, useWindowDimensions, View} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
 
 type Props = {
   onAnimationEnd: () => void;
 };
-const {height} = useWindowDimensions();
 
 const AnimatedBootSplash = ({onAnimationEnd}: Props) => {
+  const {height} = useWindowDimensions();
   const [translateY] = useState(() => new Animated.Value(0));
 
   const {container, logo /*, brand */} = BootSplash.useHideAnimation({

@@ -10,7 +10,7 @@ declare interface Driver {
   rating: number;
 }
 
-declare interface MarkerData {
+export interface MarkerData {
   latitude: number;
   longitude: number;
   id: number;
@@ -63,7 +63,7 @@ export interface ButtonProps extends TouchableOpacityProps {
   fullWidth?: boolean;
 }
 
-declare interface GoogleInputProps {
+export interface GoogleInputProps {
   icon?: string;
   initialLocation?: string;
   containerStyle?: string;
