@@ -15,6 +15,7 @@ import {images} from '../../constants/content/images.ts';
 import rides from '../../constants/content/rides.json';
 import {icons} from '../../constants/content/icons.ts';
 import {useSignOut} from '../../hooks/auth-hooks/useSignOut.ts';
+import {Map} from '../../components/Map.tsx';
 
 export function HomeScreen() {
   const me = useMe();
@@ -82,8 +83,8 @@ export function HomeScreen() {
               <Text className="text-xl font-JakartaBold mt-5 mb-3">
                 Your current location
               </Text>
-              <View className="flex flex-row items-center bg-transparent h-[300px]">
-                {/*<Map />*/}
+              <View className="flex flex-row items-center bg-transparent h-[300px] rounded-3xl overflow-hidden">
+                <Map />
               </View>
             </>
 

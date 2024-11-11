@@ -1,10 +1,11 @@
-import {Text, View} from 'react-native';
 import React from 'react';
+import {Map} from '../../components/Map.tsx';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export function RidesScreen() {
   return (
-    <View>
-      <Text>Rides</Text>
-    </View>
+    <SafeAreaView className="flex flex-1">
+      <Map />
+    </SafeAreaView>
   );
 }
